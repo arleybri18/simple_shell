@@ -20,6 +20,7 @@ typedef struct paths
 	char *str;
 	struct paths *next;
 } path;
+void handle_sigint(int sig);
 void fun_getline(void);
 void fun_exec(char **);
 path **_extractpath(path **head, char *);
