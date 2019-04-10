@@ -9,19 +9,16 @@
 
 void fun_exec(char **commands)
 {
-	int new_id, terminal = 0;
+	int new_id;
 	struct stat st;
-	pid_t child_id, parent_id;
-
-	/*validate EOF*/
-	terminal = isatty(0);
+	pid_t child_id;
 
 	/*create child proccess */
 	new_id = fork();
 	if (new_id == 0)
 	{
+		/*execute process*/
 		child_id = getpid();
-		parent_id = getpid();
 		if (stat(commands[0], &st) == 0)
 		{
 			execve(commands[0], commands, NULL);
@@ -34,8 +31,6 @@ void fun_exec(char **commands)
 	}
 	else
 	{
-		if (terminal == 0)
-			exit(98);
 		wait(&child_id);
 	}
 }
