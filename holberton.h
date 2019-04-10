@@ -26,5 +26,6 @@ void fun_exec(char **);
 path **_extractpath(path **head, char *);
 void print_list(const path *h);
 extern char **environ;
-char *_getenv(const char *);
+char *_getenv(char *);
+int _strlen(char *s);
 #endif /*_HOLBERTON_H_*/
