@@ -12,6 +12,15 @@ void fun_exec(char **commands)
 	int new_id;
 	struct stat st;
 	pid_t child_id;
+	path *head;
+	char *pathstr;
+	path **store_paths;
+
+	head = NULL;
+	store_paths = NULL;
+	pathstr = _getenv("PATH");
+	store_paths = _extractpath(&head, pathstr);
+	print_list(*store_paths);
 
 	/*create child proccess */
 	new_id = fork();
