@@ -4,7 +4,7 @@
  * @name: pointer to string-name of the require variable.
  * Return: a pointer to the string of the value or NULL.
  */
-char *_getenv(const char *name)
+char *_getenv(char *name)
 {
 	int i = 0, b = 0, c = 0;
 	char **test = environ;
