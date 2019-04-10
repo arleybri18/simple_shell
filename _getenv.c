@@ -1,3 +1,4 @@
+#include "holberton.h"
 /**
  * _getenv - returns a pointer to the corresponding
  * value string of a environment variable.
@@ -24,7 +25,7 @@ char *_getenv(char *name)
 			}
 			b++;
 		}
-		if (strlen(name) == c && test[i][b] == '=')
+		if (_strlen(name) == c && test[i][b] == '=')
 		{
 			strtok(environ[i], "=");
 			return (strtok(NULL, "="));
