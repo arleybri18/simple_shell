@@ -20,6 +20,7 @@ path **_extractpath(path **head, char *string)
 	}
 	store_path = strtok(string, ":");
 	newnode->str = store_path;
+	/*printf("%s\n", store_path);*/
 	newnode->next = NULL;
 	if (*head == NULL)
 	{
