@@ -23,6 +23,7 @@ void fun_getline(void)
 		perror("Unable to allocate memory");
 		exit(1);
 	}
+
 	/*print promt*/
 	if (isatty(0) != 0)
 		printf("#cisfun$");
@@ -41,6 +42,5 @@ void fun_getline(void)
 			count++;
 		}
 		fun_exec(commands);
-		free(commands);
 	}
 }

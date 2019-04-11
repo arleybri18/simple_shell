@@ -41,11 +41,11 @@ void fun_exec(char **commands)
 		if (stat(concat2, &st) == 0)
 		{
 			execve(concat2, commands, NULL);
-			sleep(1);
 		}
 		else
 			printf("%s: No such file or directory\n", commands[0]);
 	}
 	else
 		wait(&child_id);
+	
 }

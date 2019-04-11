@@ -30,4 +30,5 @@ char *_getenv(char *);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
+void free_grid(char **grid, int height);
 #endif /*_HOLBERTON_H_*/
