@@ -11,6 +11,7 @@ path **_extractpath(path **head, char *string)
 	char *store_path;
 	path *newnode;
 	path *lastnode = *head;
+	int len = 0, i = 0;
 
 	newnode = malloc(sizeof(path));
 	if (newnode == NULL)
@@ -19,6 +20,14 @@ path **_extractpath(path **head, char *string)
 		return (NULL);
 	}
 	store_path = strtok(string, ":");
+	len = _strlen(store_path);
+	while (i < len)
+	{
+		printf("%c\n", store_path[i]);
+		i++;
+	}
+
+	printf("first path%s\n", store_path);
 	newnode->str = store_path;
 	newnode->next = NULL;
 	if (*head == NULL)

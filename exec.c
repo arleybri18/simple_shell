@@ -6,7 +6,6 @@
  * @commands: contain the strings with the commands
  * Return: Nothing
  */
-char *_strcat(char *dest, char *src);
 void fun_exec(char **commands)
 {
 	int new_id;
