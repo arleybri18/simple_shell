@@ -29,6 +29,7 @@ path **_extractpath(path **head, char *string)
 
 	printf("first path%s\n", store_path);
 	newnode->str = store_path;
+	/*printf("%s\n", store_path);*/
 	newnode->next = NULL;
 	if (*head == NULL)
 	{

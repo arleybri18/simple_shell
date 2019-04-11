@@ -9,6 +9,7 @@ char *_getenv(char *name)
 {
 	int i = 0, b = 0, c = 0;
 	char **test = environ;
+	char *string;
 
 	while (test[i])
 	{
@@ -27,7 +28,9 @@ char *_getenv(char *name)
 		if (_strlen(name) == c && test[i][b] == '=')
 		{
 			strtok(environ[i], "=");
-			return (strtok(NULL, "="));
+			string = strtok(NULL, "=");
+			/*printf("%s\n", string);*/
+			return(string);
 		}
 		i++;
 	}
