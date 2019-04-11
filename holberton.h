@@ -29,4 +29,5 @@ extern char **environ;
 char *_getenv(char *);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
+char *_strdup(char *str);
 #endif /*_HOLBERTON_H_*/
