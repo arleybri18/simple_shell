@@ -8,51 +8,87 @@ This is a shell project created by two students of Holberton School, how part of
 
 This "Shell" allow run some basics commands how to ls, pwd, cat, etc the greather part it's contains in the path /bin.
 
-## Principles
+## Getting Started
 
-Moby is an open project guided by strong principles, aiming to be modular, flexible and without too strong an opinion on user experience.
-It is open to the community to help set its direction.
+Make a copy of this project up and running on your local machine for development and testing purposes.:q
 
-- Modular: the project includes lots of components that have well-defined functions and APIs that work together.
-- Batteries included but swappable: Moby includes enough components to build fully featured container system, but its modular architecture ensures that most of the components can be swapped by different implementations.
-- Usable security: Moby provides secure defaults without compromising usability.
-- Developer focused: The APIs are intended to be functional and useful to build powerful tools.
-They are not necessarily intended as end user tools but as components aimed at developers.
-Documentation and UX is aimed at developers not end users.
+### Prerequisites
 
-## Audience
+What things you need to install the software and how to install them
 
-The Moby Project is intended for engineers, integrators and enthusiasts looking to modify, hack, fix, experiment, invent and build systems based on containers.
-It is not for people looking for a commercially supported system, but for people who want to work and learn with open source code.
+```
+Give examples
+```
 
-## Relationship with Docker
+### Installing
 
-The components and tools in the Moby Project are initially the open source components that Docker and the community have built for the Docker Project.
-New projects can be added if they fit with the community goals. Docker is committed to using Moby as the upstream for the Docker Product.
-However, other projects are also encouraged to use Moby as an upstream, and to reuse the components in diverse ways, and all these uses will be treated in the same way. External maintainers and contributors are welcomed.
+A step by step series of examples that tell you how to get a development env running
 
-The Moby project is not intended as a location for support or feature requests for Docker products, but as a place for contributors to work on open source code, fix bugs, and make the code more useful.
-The releases are supported by the maintainers, community and users, on a best efforts basis only, and are not intended for customers who want enterprise or commercial support; Docker EE is the appropriate product for these use cases.
+Say what the step will be
 
------
+```
+Give the example
+```
 
-Legal
-=====
+And repeat
 
-*Brought to you courtesy of our legal counsel. For more context,
-please see the [NOTICE](https://github.com/moby/moby/blob/master/NOTICE) document in this repo.*
+```
+until finished
+```
 
-Use and transfer of Moby may be subject to certain restrictions by the
-United States and other governments.
+End with an example of getting some data out of the system or using it for a little demo
 
-It is your responsibility to ensure that your use and/or transfer does not
-violate applicable laws.
+## Running the tests
 
-For more information, please see https://www.bis.doc.gov
+Explain how to run the automated tests for this system
 
-Licensing
-=========
-Moby is licensed under the Apache License, Version 2.0. See
-[LICENSE](https://github.com/moby/moby/blob/master/LICENSE) for the full
-license text.
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
 
