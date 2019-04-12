@@ -15,15 +15,14 @@ void fun_exec(char **commands)
 
 	pathstr = _getenv("PATH");
 	store_paths = _extractpath(&head, pathstr);
-
+	if (_strcmp(commands[0], "exit") == 0)
+		exit(EXIT_SUCCESS);
 	/*create child proccess */
 	new_id = fork();
 	if (new_id == 0)
 	{
 		if (commands[0] == NULL)
-		{
 			exit(0);
-		}
 		if (stat(commands[0], &st) != 0)
 		{
 			node = *store_paths;

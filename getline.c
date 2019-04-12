@@ -24,14 +24,14 @@ void fun_getline(void)
 		write(STDOUT_FILENO, "\n", 1);
 		exit(98);
 	}
-
-        if (buffer == NULL || commands == NULL)
-        {
-                perror("Unable to allocate memory");
-                exit(1);
-        }
+	if (buffer == NULL || commands == NULL)
+	{
+		perror("Unable to allocate memory");
+		exit(1);
+	}
 	else
-	{	/*saved commands typed*/
+	{
+		/*saved commands typed*/
 		string = strtok(buffer, delim);
 		commands[0] = string;
 		while (string != NULL)
