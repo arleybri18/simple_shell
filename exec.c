@@ -22,23 +22,20 @@ void fun_exec(char **commands)
 	if (new_id == 0)
 	{
 		if (commands[0] == NULL)
-			exit(0);
+			exit(EXIT_SUCCESS);
 		if (stat(commands[0], &st) != 0)
-		{
-			node = *store_paths;
-			while (node->str)
-			{
-				concat = _strdup(node->str);
-				concat1 = _strcat(concat, "/");
-				concat2 = _strcat(concat1, commands[0]);
-				if (stat(concat2, &st) == 0)
-					break;
-				node = node->next;
-			}
+		{node = *store_paths;
+		while (node->str)
+		{	concat = _strdup(node->str);
+			concat1 = _strcat(concat, "/");
+			concat2 = _strcat(concat1, commands[0]);
+			if (stat(concat2, &st) == 0)
+				break;
+			node = node->next;
+		}
 		}
 		else
 			concat2 = commands[0];
-
 		/*execute process*/
 		if (stat(concat2, &st) == 0)
 			execve(concat2, commands, NULL);

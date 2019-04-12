@@ -1,11 +1,11 @@
 #include "holberton.h"
-#include <stdlib.h>
 
-/** _strdup - duplicate a string with dynamic array
+/**
+ * _strdup - duplicate a string with dynamic array
  *
- * @str: string
+ * @str: string to duplicate
  *
- * Return: NULL if a size or malloc fail, or copy array it's ok.
+ * Return: NULL if a size or malloc fail, or copy array it's ok
  */
 char *_strdup(char *str)
 {
