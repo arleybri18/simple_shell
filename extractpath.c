@@ -8,8 +8,8 @@
  */
 path **_extractpath(path **head, char *string)
 {
-	char *store_path;
-	path *newnode;
+	char *store_path = NULL;
+	path *newnode = NULL;
 	path *lastnode = *head;
 
 	newnode = malloc(sizeof(path));
@@ -19,15 +19,20 @@ path **_extractpath(path **head, char *string)
 		return (NULL);
 	}
 	store_path = strtok(string, ":");
+	printf("store%s\n", store_path);
+	if (!store_path)
+		return (head);
 	newnode->str = store_path;
 	newnode->next = NULL;
 	if (*head == NULL)
-	{
 		*head = newnode;
-	}
+
 	while (store_path != NULL)
 	{
 		store_path = strtok(NULL, ":");
+		if (!store_path)
+			break;
+		printf("store%s\n", store_path);
 		newnode = malloc(sizeof(path));
 		if (newnode == NULL)
 		{

@@ -8,29 +8,28 @@
 void fun_getline(void)
 {
 	int count = 1;
-	char *buffer;
+	char *buffer = NULL;
 	size_t bufsize = 1024;
-	ssize_t characters;
+	ssize_t characters = 0;
 	char delim[] = " \n";
 	char *string;
-	char **commands;
+	char *commands[20];
 
-	/*allocate memory for commands*/
-	commands = malloc(1024 * sizeof(char *));
-
-	if (buffer == NULL || commands == NULL)
-	{
-		perror("Unable to allocate memory");
-		exit(1);
-	}
-
-	/*print promt*/
 	if (isatty(0) != 0)
 		printf("#cisfun$");
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF)
+	{
+		write(STDOUT_FILENO, "\n", 1);
 		exit(98);
+	}
+
+        if (buffer == NULL || commands == NULL)
+        {
+                perror("Unable to allocate memory");
+                exit(1);
+        }
 	else
 	{	/*saved commands typed*/
 		string = strtok(buffer, delim);
@@ -42,5 +41,6 @@ void fun_getline(void)
 			count++;
 		}
 		fun_exec(commands);
+		free(buffer);
 	}
 }
