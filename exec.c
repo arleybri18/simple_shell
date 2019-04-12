@@ -10,7 +10,7 @@ void fun_exec(char **commands)
 {
 	int new_id;
 	struct stat st;
-	pid_t child_id;
+/*	pid_t child_id;*/
 	path *head = NULL, *node, **store_paths = NULL;
 	char *concat, *concat1, *concat2, *pathstr;
 
@@ -21,6 +21,10 @@ void fun_exec(char **commands)
 	new_id = fork();
 	if (new_id == 0)
 	{
+		if (commands[0] == NULL)
+		{
+			exit(0);
+		}
 		if (stat(commands[0], &st) != 0)
 		{
 			node = *store_paths;
@@ -37,7 +41,7 @@ void fun_exec(char **commands)
 		else
 			concat2 = commands[0];
 		/*execute process*/
-		child_id = getpid();
+/*		child_id = getpid();*/
 		if (stat(concat2, &st) == 0)
 		{
 			execve(concat2, commands, NULL);
@@ -46,6 +50,7 @@ void fun_exec(char **commands)
 			printf("%s: No such file or directory\n", commands[0]);
 	}
 	else
-		wait(&child_id);
-	
+	{
+		wait(NULL);
+	}
 }

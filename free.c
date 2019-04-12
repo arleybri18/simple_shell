@@ -8,16 +8,11 @@
  *
  * Return: Nothing
  */
-
 void free_grid(char **grid, int height)
 {
-	int i;
+	int i = 0;
 
-	/* validate if grid is null, free memory*/
-	if (grid == NULL)
-		free(grid);
-	/*Iterate array and free memory*/
-	for (i = height - 1; i >= 0; i--)
+	for (i = 0; i < height; i++)
 		free(grid[i]);
 	free(grid);
 }

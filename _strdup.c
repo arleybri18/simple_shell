@@ -51,5 +51,4 @@ char *_strdup(char *str)
 		arr[i] = str[i];
 	}
 	return (arr);
-	free(arr);
 }
