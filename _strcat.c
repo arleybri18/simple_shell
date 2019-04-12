@@ -14,6 +14,8 @@ char *_strcat(char *dest, char *src)
 
 	if (src == NULL)
 		src = "";
+	if (dest == NULL)
+		dest = "";
 	while (*(dest + destlen) != '\0')
 	{
 		destlen++;
