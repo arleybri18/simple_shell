@@ -1,54 +1,33 @@
 #include "holberton.h"
 #include <stdlib.h>
 
-
-/**
- * _strlenght - calculate a length of a string
- *
- * @s: string
- *
- * Return: size of string
- */
-
-unsigned int _strlenght(char *s)
-{
-	unsigned int i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-
-/**
- * _strdup - duplicate a string with dynamic array
+/** _strdup - duplicate a string with dynamic array
  *
  * @str: string
  *
  * Return: NULL if a size or malloc fail, or copy array it's ok.
  */
-
 char *_strdup(char *str)
 {
-	unsigned int i;
-	unsigned int size;
-	char *arr;
-	/* Validate lenght of array*/
-	if (!str)
-		return (NULL);
-	size = 1 + _strlenght(str);
-	if (size == 0)
-		return (NULL);
+	char *copy;
+	char len = '0';
+	unsigned int i = 0;
+	unsigned int j = 0;
 
-	/* allocate space char array*/
-	arr = malloc(size * sizeof(char));
-	/* validate return function malloc*/
-	if (arr == NULL)
+	if (str == NULL)
 		return (NULL);
-	for (i = 0; i <= size; i++)
+	while (len != '\0')
 	{
-		arr[i] = str[i];
+		len = *(str + i);
+		i++;
 	}
-	return (arr);
+	copy = malloc(i * sizeof(char));
+	if (copy == NULL)
+		return (NULL);
+	while (j < i)
+	{
+		copy[j] = str[j];
+		j++;
+	}
+	return (copy);
 }
