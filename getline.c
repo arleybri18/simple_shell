@@ -11,7 +11,7 @@ void fun_getline(void)
 	char *buffer = NULL;
 	size_t bufsize = 1024;
 	ssize_t characters = 0;
-	char delim[] = " \n";
+	char delim[] = " \t\r\n";
 	char *string;
 	char *commands[20];
 

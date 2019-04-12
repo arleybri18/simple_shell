@@ -12,9 +12,8 @@
 int _strncmp(char *s1, char *s2, int len)
 {
 	int i;
-	int flag;
+	int flag = 0;
 
-	flag = 0;
 	for (i = 0; s1[i] != '\0' && flag == 0 && i < len; i++)
 	{
 		if (s1[i] != s2[i])
