@@ -38,11 +38,16 @@ void fun_exec(char **commands)
 		}
 		else
 			concat2 = commands[0];
+
 		/*execute process*/
 		if (stat(concat2, &st) == 0)
 			execve(concat2, commands, NULL);
 		else
+		{
+			free(concat2);
+			free_list(*store_paths);
 			printf("%s: No such file or directory\n", commands[0]);
+		}
 	}
 	else
 		wait(NULL);
