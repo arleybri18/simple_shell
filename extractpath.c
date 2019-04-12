@@ -19,7 +19,7 @@ path **_extractpath(path **head, char *string)
 		return (NULL);
 	}
 	store_path = strtok(string, ":");
-	printf("store%s\n", store_path);
+	/*printf("store%s\n", store_path);*/
 	if (!store_path)
 		return (head);
 	newnode->str = store_path;
@@ -32,7 +32,7 @@ path **_extractpath(path **head, char *string)
 		store_path = strtok(NULL, ":");
 		if (!store_path)
 			break;
-		printf("store%s\n", store_path);
+		/*printf("store%s\n", store_path);*/
 		newnode = malloc(sizeof(path));
 		if (newnode == NULL)
 		{

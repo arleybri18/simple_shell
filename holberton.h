@@ -7,7 +7,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include<signal.h>
+#include <signal.h>
 /**
  * struct paths - singly linked list
  * @next: pointer to the next node
@@ -32,4 +32,6 @@ char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
 void free_grid(char **grid, int height);
 void free_list(path *head);
+int _strncmp(char *s1, char*s2, int len);
+int _strcmp(char *s1, char*s2);
 #endif /*_HOLBERTON_H_*/
