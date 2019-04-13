@@ -13,7 +13,7 @@ void fun_getline(void)
 	ssize_t characters = 0;
 	char delim[] = " \t\r\n";
 	char *string;
-	char *commands[20];
+	char *commands[50];
 
 	if (isatty(0) != 0)
 		printf("#cisfun$");
@@ -41,5 +41,6 @@ void fun_getline(void)
 			count++;
 		}
 		fun_exec(commands);
+
 	}
 }

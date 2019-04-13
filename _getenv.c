@@ -21,7 +21,10 @@ char *_getenv(char *name)
 			if (name[b] == test[i][b])
 				c++;
 			else
+			{
+				c = 0;
 				break;
+			}
 			b++;
 		}
 		string = NULL;
