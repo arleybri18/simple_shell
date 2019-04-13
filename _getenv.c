@@ -9,8 +9,10 @@ char *_getenv(char *name)
 {
 	int i = 0, b = 0, c = 0;
 	char **test = environ;
-	char *string, *copy = NULL;
+	char *string = NULL, *copy = NULL;
 
+	if (!name)
+		return (NULL);
 	while (test[i])
 	{
 		b = 0;
@@ -19,12 +21,10 @@ char *_getenv(char *name)
 			if (name[b] == test[i][b])
 				c++;
 			else
-			{
-				c = 0;
 				break;
-			}
 			b++;
 		}
+		string = NULL;
 		if (_strlen(name) == c && test[i][b] == '=')
 		{
 			copy = _strdup(environ[i]);

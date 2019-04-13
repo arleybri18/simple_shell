@@ -9,7 +9,7 @@ void fun_getline(void)
 {
 	int count = 1;
 	char *buffer = NULL;
-	size_t bufsize = 1024;
+	size_t bufsize = 0;
 	ssize_t characters = 0;
 	char delim[] = " \t\r\n";
 	char *string;
@@ -19,7 +19,7 @@ void fun_getline(void)
 		printf("#cisfun$");
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
-	if (characters == EOF)
+	if (characters == EOF || characters == -1)
 	{
 		write(STDOUT_FILENO, "\n", 1);
 		exit(98);
@@ -41,6 +41,5 @@ void fun_getline(void)
 			count++;
 		}
 		fun_exec(commands);
-		free(buffer);
 	}
 }
