@@ -10,6 +10,6 @@ void free_list(path *head)
 		return;
 	if (head->next != NULL)
 		free_list(head->next);
-	free(head->str);
+	/*free(head->str);*/
 	free(head);
 }
