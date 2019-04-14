@@ -34,4 +34,5 @@ void free_grid(char **grid, int height);
 void free_list(path *head);
 int _strncmp(char *s1, char*s2, int len);
 int _strcmp(char *s1, char*s2);
+char *command(char **commands, path *list);
 #endif /*_HOLBERTON_H_*/

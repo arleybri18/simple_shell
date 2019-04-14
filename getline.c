@@ -40,7 +40,11 @@ void fun_getline(void)
 			commands[count] = string;
 			count++;
 		}
+		if (commands[0] != NULL)
+		{
+			if (_strncmp(commands[0], "exit", 4) == 0)
+				exit(EXIT_SUCCESS);
+		}
 		fun_exec(commands);
-
 	}
 }

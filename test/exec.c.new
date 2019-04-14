@@ -11,40 +11,27 @@ void fun_exec(char **commands)
 	int new_id;
 	struct stat st;
 	path *head = NULL, **store_paths = NULL;
-	char *exec_command = NULL, *pathstr = NULL;
+	char *validate, *pathstr;
 
 	pathstr = _getenv("PATH");
 	store_paths = _extractpath(&head, pathstr);
-	if (!store_paths)
-	{
-		/*printf("NULL PATH");*/
-		free_list(head);
+	if (_strcmp(commands[0], "exit") == 0)
 		exit(EXIT_SUCCESS);
-	}
 	/*create child proccess */
 	new_id = fork();
 	if (new_id == 0)
 	{
-		exec_command = command(commands, *store_paths);
+		validate = validate_commands(commands, store_paths);
 		/*execute process*/
-		if (stat(exec_command, &st) == 0)
-		{
-			execve(exec_command, commands, NULL);
-			free_list(head);
-			free(exec_command);
-		exit(EXIT_SUCCESS);
-		}
+		if (stat(validate, &st) == 0)
+			execve(validate, commands, NULL);
 		else
 		{
 			printf("%s: No such file or directory\n", commands[0]);
-			free_list(head);
-			free(exec_command);
+			/*free(validate);*/
+			/*free_list(*store_paths);*/
 		}
 	}
 	else
-	{
-		free_list(head);
-		free(exec_command);
 		wait(NULL);
-	}
 }
