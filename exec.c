@@ -8,10 +8,11 @@
  */
 void fun_exec(char **commands)
 {
-	int new_id;
+	int new_id, i;
 	struct stat st;
-	path *head = NULL, *node, **store_paths = NULL;
-	char *concat = NULL, *pathstr = NULL;
+	path *head = NULL, **store_paths = NULL;
+	char *exec_command = NULL, *pathstr = NULL;
+	/*char **envir = environ;*/
 
 	pathstr = _getenv("PATH");
 	store_paths = _extractpath(&head, pathstr);
@@ -19,75 +20,32 @@ void fun_exec(char **commands)
 	{
 		/*printf("NULL PATH");*/
 		free_list(head);
-		exit(EXIT_SUCCESS);
-	}
-
-	if (commands[0] != NULL)
-	{
-		if (_strncmp(commands[0], "exit", 4) == 0)
-			exit(EXIT_SUCCESS);
-	}
-
+		exit(EXIT_SUCCESS);	}
 	/*create child proccess */
 	new_id = fork();
 	if (new_id == 0)
 	{
-
-		if (commands[0] == NULL)
-			exit(EXIT_SUCCESS);
-
-		node = *store_paths;
-		if (!node)
-		{
-			/*printf("NULL PATH");*/
-			exit(EXIT_SUCCESS);
-		}
-		if (!node->str)
-		{
-			/*printf("NULL PATH");*/
-			exit(EXIT_SUCCESS);
-		}
-		/*if (stat(commands[0], &st) != 0)*/
-		if (commands[0][0] != '/')
-		{
-			while (node)
-			{	concat = _strdup(node->str);
-				if (!concat)
-				{
-					printf("insufficient memory was available.");
-					free_list(head);
-					free(concat);
-					exit(EXIT_SUCCESS);
-				}
-				concat = _strcat(concat, "/");
-				concat = _strcat(concat, commands[0]);
-				if (stat(concat, &st) == 0)
-					break;
-				node = node->next;
-			}
-		}
-		else
-			concat = commands[0];
+		exec_command = command(commands, *store_paths);
 		/*execute process*/
-		if (stat(concat, &st) == 0)
+		if (_strncmp(commands[0], "env", 3) == 0)
 		{
-			execve(concat, commands, NULL);
+			for (i = 0; environ != NULL; i++)
+				printf("%s\n", environ[i]);	}
+		else if (stat(exec_command, &st) == 0)
+		{
+			execve(exec_command, commands, NULL);
 			free_list(head);
-			free(concat);
-			exit(EXIT_SUCCESS);
-		}
-
+			free(exec_command);
+			exit(EXIT_SUCCESS);		}
 		else
 		{
 			printf("%s: No such file or directory\n", commands[0]);
-			free(concat);
 			free_list(head);
-		}
+			free(exec_command);		}
 	}
 	else
 	{
 		free_list(head);
-		free(concat);
-		wait(NULL);
-	}
+		free(exec_command);
+		wait(NULL);	}
 }
