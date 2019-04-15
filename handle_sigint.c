@@ -9,6 +9,6 @@
 void handle_sigint(int sig)
 {
 	if (sig != 0)
-		printf("\n#cisfun$");
+		write(STDOUT_FILENO, "\n", 1);
 	fflush(stdout);
 }
