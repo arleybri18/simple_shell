@@ -23,7 +23,7 @@ void fun_getline(char **argv, char **env)
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF || characters == -1)
 	{
-		write(STDOUT_FILENO, "\n", 1);
+		write(STDOUT_FILENO, "", 1);
 		exit(EXIT_SUCCESS);
 	}
 	if (buffer == NULL || commands == NULL)
