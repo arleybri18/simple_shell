@@ -17,8 +17,6 @@ void fun_getline(char **argv, char **env)
 	char *string;
 	char *commands[50];
 
-	if (isatty(0) != 0)
-		write(STDOUT_FILENO, "", 0);
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF || characters == -1)
