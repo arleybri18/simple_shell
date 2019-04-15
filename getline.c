@@ -18,7 +18,7 @@ void fun_getline(char **argv, char **env)
 	char *commands[50];
 
 	if (isatty(0) != 0)
-		printf("#cisfun$");
+		write(STDOUT_FILENO, "", 1);
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF || characters == -1)
