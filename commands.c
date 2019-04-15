@@ -12,7 +12,6 @@ char *command(char **commands, path *list)
 	struct stat st;
 	char *concat = NULL;
 
-
 	if (commands[0] == NULL)
 		exit(EXIT_SUCCESS);
 	if (!list)
@@ -45,5 +44,7 @@ char *command(char **commands, path *list)
 	}
 	else
 		concat = commands[0];
+	if (stat(concat, &st) != 0)
+		return (commands[0]);
 	return (concat);
 }
