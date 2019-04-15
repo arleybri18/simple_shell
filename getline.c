@@ -17,19 +17,19 @@ void fun_getline(char **argv, char **env)
 	char *string;
 	char *commands[50];
 
-	if (isatty(0) != 0)
-		printf("#cisfun$");
+	/*if (isatty(0) != 0)
+		printf("#cisfun$");*/
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF || characters == -1)
 	{
 		write(STDOUT_FILENO, "\n", 1);
-		exit(98);
+		exit(EXIT_SUCCESS);
 	}
 	if (buffer == NULL || commands == NULL)
 	{
 		perror("Unable to allocate memory");
-		exit(1);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
