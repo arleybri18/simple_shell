@@ -21,8 +21,8 @@ typedef struct paths
 	struct paths *next;
 } path;
 void handle_sigint(int sig);
-void fun_getline(void);
-void fun_exec(char **);
+void fun_getline(char **argv, char **env);
+void fun_exec(char **, char **, char **);
 path **_extractpath(path **head, char *);
 void print_list(const path *h);
 extern char **environ;
@@ -34,4 +34,7 @@ void free_grid(char **grid, int height);
 void free_list(path *head);
 int _strncmp(char *s1, char*s2, int len);
 int _strcmp(char *s1, char*s2);
+char *command(char **commands, path *list);
+void handle_errors(char **, char **);
+void print_env(char **);
 #endif /*_HOLBERTON_H_*/

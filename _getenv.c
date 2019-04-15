@@ -34,8 +34,10 @@ char *_getenv(char *name)
 			strtok(copy, "=");
 			string = strtok(NULL, "=");
 			return (string);
+			free(copy);
 		}
 		i++;
 	}
+	free(copy);
 	return (NULL);
 }

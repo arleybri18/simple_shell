@@ -2,10 +2,12 @@
 /**
  * fun_getline -  function that get the characters in the line
  *
+ * @argv: arguments received on main
+ * @env: variable enviroment of the main
  * Return: Nothing;
  */
 
-void fun_getline(void)
+void fun_getline(char **argv, char **env)
 {
 	int count = 1;
 	char *buffer = NULL;
@@ -16,18 +18,18 @@ void fun_getline(void)
 	char *commands[50];
 
 	if (isatty(0) != 0)
-		printf("#cisfun$");
+		write(STDOUT_FILENO, "", 1);
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF || characters == -1)
 	{
 		write(STDOUT_FILENO, "\n", 1);
-		exit(98);
+		exit(EXIT_SUCCESS);
 	}
 	if (buffer == NULL || commands == NULL)
 	{
 		perror("Unable to allocate memory");
-		exit(1);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
@@ -40,7 +42,11 @@ void fun_getline(void)
 			commands[count] = string;
 			count++;
 		}
-		fun_exec(commands);
-
+		if (commands[0] != NULL)
+		{
+			if (_strncmp(commands[0], "exit", 4) == 0)
+				exit(EXIT_SUCCESS);
+		}
+		fun_exec(argv, env, commands);
 	}
 }
