@@ -2,10 +2,12 @@
 /**
  * fun_getline -  function that get the characters in the line
  *
+ * @argv: arguments received on main
+ * @env: variable enviroment of the main
  * Return: Nothing;
  */
 
-void fun_getline(void)
+void fun_getline(char **argv, char **env)
 {
 	int count = 1;
 	char *buffer = NULL;
@@ -45,6 +47,6 @@ void fun_getline(void)
 			if (_strncmp(commands[0], "exit", 4) == 0)
 				exit(EXIT_SUCCESS);
 		}
-		fun_exec(commands);
+		fun_exec(argv, env, commands);
 	}
 }
