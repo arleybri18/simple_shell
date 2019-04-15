@@ -2,93 +2,104 @@
 The Own Shell Project
 =====================
 
-![Moby Project logo](docs/static_files/moby-project-logo.png "The Own Shell Project")
-
 This is a shell project created by two students of Holberton School, how part of the challenges for become to enginner software developers.
 
-This "Shell" allow run some basics commands how to ls, pwd, cat, etc the greather part it's contains in the path /bin.
+This **Shell** allows run some basics commands of the shell linux, like to ls, pwd, cat, etc mostly contained path /bin.
 
 ## Getting Started
 
-Make a copy of this project up and running on your local machine for development and testing purposes.:q
+Make a copy of this project up and compile **C** files using *gcc* compiler see installing section.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You need the follow software to run the shell:
 
-```
-Give examples
-```
+* Linux Ubuntu 14.04.3 LTS
+* gcc 4.8.4
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Follow the next steps for installing this shell:
 
-Say what the step will be
-
+1 - Once you have downloaded the repository, run the following command to compile the files:
 ```
-Give the example
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
-
-And repeat
-
+2- Execute shell with the command:
 ```
-until finished
+./hsh
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+You can try this shell by running the following commands.
 
-### Break down into end to end tests
+### ls command
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+Run the shell and type command *ls* and press enter: 
 
 ```
-Give an example
+> ./hsh
+#cisfun$ls
+#Makefile#  _strcat.c   exec.c         freelist.c       print_list.c
+AUTHORS     _strcmp.c   getline.c      Makefile         _strdup.c   
+handle_sigint.c         shell.c        README.md        _strncmp.c  
+_getenv.c   commands.c  free.c         hsh              test
+#cisfun$
+```
+### ls command executed from /bin path
+
+Run the shell and type command */bin/ls* and press enter: 
+
+```
+> ./hsh
+#cisfun$/bin/ls
+#Makefile#  _strcat.c   exec.c         freelist.c       print_list.c
+AUTHORS     _strcmp.c   getline.c      Makefile         _strdup.c   
+handle_sigint.c         shell.c        README.md        _strncmp.c  
+_getenv.c   commands.c  free.c         hsh              test
+#cisfun$
+```
+### pwd command
+
+Run the shell and type command *pwd* and press enter: 
+
+```
+> ./hsh
+#cisfun$pwd
+/home/vagrant/projects/simple_shell
+#cisfun$
+```
+### cat command
+
+Run the shell and type command *cat **namefile*** and press enter: 
+
+```
+> ./hsh
+#cisfun$cat AUTHORS
+# This file lists all individuals having contributed content to the repository.
+
+Rodrigo Sierra <735@holbertonschool.com>
+Yony Brinez <769@holbertonschool.com>
+#cisfun$
 ```
 
-## Deployment
+### Other tests
 
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+You can contribute to do more test int those repositories [Holberton test shell](https://github.com/holbertonschool/0x15.c/) and [Holberton Colombia test shell](https://github.com/holberton-school-colombia/tests_simple_shell).
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+This repository is open source. 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Rodrigo Sierra** - *Initial work* - [Git Hub Repository](https://github.com/RodrigoSierraV)
+* **Yony Briñez** - *Initial work* - [Git Hub Repository](https://github.com/arleybri18/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+See also the list of [contributors](https://github.com/arleybri18/simple_shell/blob/master/AUTHORS) who participated in this project.
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Holberton School thanks for this challenge that allows to put into practice all the acquired knowledge.
 
