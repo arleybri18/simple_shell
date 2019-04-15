@@ -18,12 +18,11 @@ void fun_getline(char **argv, char **env)
 	char *commands[50];
 
 	if (isatty(0) != 0)
-		write(STDOUT_FILENO, "", 1);
+		write(STDOUT_FILENO, "", 0);
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF || characters == -1)
 	{
-		write(STDOUT_FILENO, "", 1);
 		exit(EXIT_SUCCESS);
 	}
 	if (buffer == NULL || commands == NULL)
