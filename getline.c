@@ -4,10 +4,11 @@
  *
  * @argv: arguments received on main
  * @env: variable enviroment of the main
+ * @last_status: save de last status
  * Return: Nothing;
  */
 
-void fun_getline(char **argv, char **env)
+int fun_getline(char **argv, char **env, int *last_status)
 {
 	int count = 1;
 	char *buffer = NULL;
@@ -42,8 +43,9 @@ void fun_getline(char **argv, char **env)
 		if (commands[0] != NULL)
 		{
 			if (_strncmp(commands[0], "exit", 4) == 0)
-				exit(EXIT_SUCCESS);
+				exit(*last_status);
 		}
-		fun_exec(argv, env, commands);
+		*last_status = fun_exec(argv, env, commands);
 	}
+	return (*last_status);
 }
