@@ -43,45 +43,41 @@ int fun_getline(char **argv, char **env, int *last_status)
 		{
 			if (_strncmp(commands[0], "exit", 4) == 0)
 				exit(*last_status);
-			if (_strncmp(commands[0], "cd", 2) == 0)
-			{
-				chdir(commands[1]);
-				return (EXIT_SUCCESS);
-			}
 		}
 		*last_status = fun_exec(argv, env, commands);
 	}
 	return (*last_status);
 }
+/**
+ * _getline - do the same getline function from C
+ *
+ * @buffer: pointer to a null array
+ * @n: size of buffer
+ *
+ * Return: characters read;
+ */
 ssize_t _getline(char **buffer, size_t *n)
 {
-        char buf[120];
-        ssize_t characters = 0, resize = 1;
+	char buf[120];
+	ssize_t characters = 0, resize = 1;
 
-        *buffer = malloc(120 * sizeof(char));
-        /*if (isatty(0) != 0)
-          stm = 0;*/
-        characters = read(STDIN_FILENO, &buf, 120);
-        if (buf[0] == 0)
-                return (-1);
-        /*printf("Char:%lu",characters);
-        if (characters == EOF || characters == -1)
-        exit(EXIT_SUCCESS);*/
-        strncat(*buffer, buf, characters);
-        if (characters == 120)
-        {
-                while (characters == 120)
-                {
-                        resize++;
-                        *buffer = realloc(*buffer, resize * 120);
-                        characters = read(STDIN_FILENO, buf, 120);
-                        if (characters == -1)
-                                return (-1);
-                        /*if (characters == EOF || characters == -1)
-                          exit(EXIT_SUCCESS);*/
-                        strncat(*buffer, buf, characters);
-                }
-        }
-        *n = resize * 120;
-        return (characters);
+	*buffer = malloc(120 * sizeof(char));
+	characters = read(STDIN_FILENO, &buf, 120);
+	if (buf[0] == 0)
+		return (-1);
+	strncat(*buffer, buf, characters);
+	if (characters == 120)
+	{
+		while (characters == 120)
+		{
+			resize++;
+			*buffer = realloc(*buffer, resize * 120);
+			characters = read(STDIN_FILENO, buf, 120);
+			if (characters == -1)
+				return (-1);
+			strncat(*buffer, buf, characters);
+		}
+	}
+	*n = resize * 120;
+	return (characters);
 }
