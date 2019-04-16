@@ -1,151 +1,84 @@
 .\" manpage for simple_shell
 .TH simple_shell 1 "15 April 2019" "version 1.0" "simple_shell manpage"
 .SH NAME
-simple_shell - own shell project
+simple_shell - Own simple hell project
 .SH SYNOPSIS
 .B simple_shell
-.RI "[" OPTION "]..."
+.RI "[""OPTIONS""]
 .SH DESCRIPTION
 .B simple_shell
-prints information about the current python environment, including python
-version(s), the git branch of the current directory and information on
-installed packages, IPython and the the ipdb and pydb debuggers.
+This shell is a copy created on C language, using the functions and system calls provided by the linux system. Simple shell allows execute some basics commands most the commands that are in the
+.IR "PATH" ".
+enviroment variable.
 .PP
-.B simple_shell
-.RI "works best with " pyenv .
-It can still report information without pyenv installed, but will have limited
-reporting functionality. Git information will not print if git is not installed,
-and any level of reporting more verbose than the
-.IB -1 " option"
-will be ignored if pip is not installed on the currently active environment.
-.PP
-If pyenv is installed, simple_shell can show all python versions that were enabled
-through either the 'global', 'local' or 'shell' options of pyenv. It also
-supports the pyenv virtualenv extension.
-.PP
-The currently active python version is always highlighted, or prefixed with an
-.RB ' * '
-if running simple_shell with the
-.IB -c " option"
-or in a terminal without color support.
-.PP
-.RB The " (system) " "flag indicates packages that are not installed on the
-currently active environment but can still be reached through the
-.IR "PATH" ". Do not confuse with"
-.BR 'system' ", that may be displayed on the first line of the output; That's
-the system python installation, usually at
-.IR /usr/bin ", that is printed by"
-.BR simple_shell " when pyenv is not installed, or has not activated any environment."
-See below.
+The simple shell can be run in interactive mode and non-interacctive mode, you can run this shell on
+.IR "Linux Ubuntu 14.04.3 LTS" "
+and was compiled with
+.IR "gcc 4.8.4".
+
+This shell implented functions that allows execute commands that are in the current dierctory, however, it has precedence if the executable file of the command is in the path indicated by the environment variable
+.IR "PATH" ".
+The enviroment variable is read at the begin of the execution, if you need add a new path for search your executables please modify the
+.IR "PATH" " enviroment variable.
+
+The options to execute commands in this sell is described below.
 .SH OPTIONS
 .TP
 .B -1
-Prints only the first line of the output, consisting of the Python environment
-.RB "and git branch. " "This is the default option" .
+Non-interactive mode, you can run any command using the follow notation (echo "COMMAND" | ./hsh"). In this case the shell will execute the command and return to the prompt.
 .TP
 .B -2
-.RB "(implies " -1 ") Prints also the second line of the output, with"
-information on IPython and the ipdb and pydb debuggers. If pip is not installed
-.RB "on the current environment, it will have the same effect as " -1 .
-.TP
-.B -a
-.RB "(implies " -2 ") Prints all information. This includes a list of installed"
-packages. If pip is not installed on the current environment, it will have the
-.RB "same effect as " -1 .
-.TP
-.B -o
-.RB "(implies " -a ") Any outdated packages will be highlighted, based on
-the 'pip list -o' command.
-.PP
-.RS
-.B "Note:"
-All the above options are mutually exclusive. If they are used together, only
-the rightmost option will take effect.
-.RE
-.TP
-.B -c
-Forces the use of no color in the program output. This option is not necessary
-.RB "on terminals without color support, since " "simple_shell" " will know when it"
-needs to switch to a non color output.
-.TP
-.B -h
-Prints program usage information and exits successfully.
-.TP
-.B -v
-Prints the program version number and exits successfully.
+Interactive mode, execute the shell using the command ./hsh and once inside execute the command you need.
 .SH EXAMPLES
-The following will show a typical output on a directory with a git repository
-with the 'develop' branch checked out.
+The following are examples for run commands on the shell
+.TP
+.B
+ls command
 .PP
 .RS
-.BR $ " pyenv shell 3.5.2 2.7.11"
+.BR $ " ./hsh"
 .br
-.BR $ " simple_shell -c"
+.BR " ls"
 .br
-python: *3.5.2 2.7.11 (shell)    git branch: develop
+#Makefile#  _strcat.c   exec.c         freelist.c       print_list.c
 .RE
 .PP
-The following shows a pyenv python 2.7.11 installation where neither IPython or
-ipdb are installed. But because they are both installed on the system
-.RI "Python environment and available in the " PATH ", they still get listed as"
-.RB "as being available, hence the " (system) " flag."
+You can use the full path of the command:
 .PP
 .RS
-.BR $ " pyenv shell 2.7.11 3.5.2"
+.BR $ " ./hsh"
 .br
-.BR $ " simple_shell -2c"
+.BR " /bin/ls"
 .br
-python: *2.7.11 3.5.3 (shell)    git branch: develop
+#Makefile#  _strcat.c   exec.c         freelist.c       print_list.c
 .br
-ipython: yes (system)    ipdb: yes (system)    pydb: no
-.RE
-.PP
-Changing to a virtual environment named 'soray' that has been set with
-the 'local' option of pyenv, for easier switching when walking to the directory,
-results in a similar output to the following.
 .PP
 .RS
-.BR $ " pyenv shell --unset"
+.BR $ " ./hsh"
 .br
-.BR $ " cd ~/Projects/Scripts"
+.BR " pwd"
 .br
-.BR $ " simple_shell -c"
-.br
-python: soray *3.5.2 (local virtual)    git branch: dataopers
+/home/vagrant/projects/simple_shell
 .RE
 .PP
-The following shows a typical output when pyenv is not installed, or when it
-doesn't have any environment activated. The currently active Python installation
-is the system one. Also showing the output of git when the prompt is in a
-directory outside any git repository.
+You can use the full path of the command:
 .PP
 .RS
-.BR $ " simple_shell -2c"
+.BR $ " ./hsh"
 .br
-python: system *2.7.12 (global)    git branch: n/a
+.BR " /bin/pwd"
 .br
-ipython: yes    ipdb: yes    pydb: no
+/home/vagrant/projects/simple_shell
 .RE
-.SH EXIT STATUS
-If python is not installed on the system, this program will end with exit status
-1.
-.SH BUGS
-No known bugs.
-.SH AUTHOR
-Mario Figueiredo (marfig@gmx.com)
+.RS
+.br
+.SH AUTHORS
+Rodrigo Sierra (735@holbertonschool.com)
+Yony Briñez (769@holbertonschool.com)
 .SH COPYRIGHT
-MIT License
+ License
 .PP
-Copyright (c) 2016 Mario Figueiredo
+Copyright (c) 2019
 .PP
 This document is part of the simple_shell software.
-.PP
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-.PP
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+
