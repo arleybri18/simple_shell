@@ -37,4 +37,5 @@ int _strcmp(char *s1, char *s2);
 char *command(char **commands, path *list);
 void handle_errors(char **, char **);
 void print_env(char **);
+ssize_t _getline(char **buffer, size_t *n);
 #endif /*_HOLBERTON_H_*/
