@@ -16,4 +16,5 @@ void handle_errors(char **argv, char **commands)
 	error = _strcat(error, commands[0]);
 	error = _strcat(error, ": No such file or directory\n");
 	write(STDOUT_FILENO, error, _strlen(error));
+	exit(EXIT_FAILURE);
 }

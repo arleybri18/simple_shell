@@ -21,8 +21,8 @@ typedef struct paths
 	struct paths *next;
 } path;
 void handle_sigint(int sig);
-void fun_getline(char **argv, char **env);
-void fun_exec(char **, char **, char **);
+int fun_getline(char **argv, char **env, int *);
+int fun_exec(char **, char **, char **);
 path **_extractpath(path **head, char *);
 void print_list(const path *h);
 extern char **environ;

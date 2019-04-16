@@ -8,9 +8,10 @@
  * @env: variable environ received from main
  * Return: Nothing
  */
-void fun_exec(char **argv, char **env, char **commands)
+int fun_exec(char **argv, char **env, char **commands)
 {
-	int new_id;
+	int new_id, wstatus;
+	pid_t mypid = 0;
 	struct stat st;
 	path *head = NULL, **store_paths = NULL;
 	char *exec_command = NULL, *pathstr = NULL;
@@ -22,21 +23,18 @@ void fun_exec(char **argv, char **env, char **commands)
 	{
 		/*printf("NULL PATH");*/
 		free_list(head);
-		exit(EXIT_SUCCESS);	}
+		exit(EXIT_FAILURE);	}
 	/*create child proccess */
 	new_id = fork();
 	if (new_id == 0)
 	{
+		mypid = getpid();
 		exec_command = command(commands, *store_paths);
 		/*execute process*/
 		if (_strncmp(commands[0], "env", 3) == 0)
 			print_env(env);
 		else if (stat(exec_command, &st) == 0)
-		{
 			execve(exec_command, commands, NULL);
-			free_list(head);
-			free(exec_command);
-			exit(EXIT_SUCCESS);		}
 		else
 		{
 			handle_errors(argv, commands);
@@ -47,5 +45,8 @@ void fun_exec(char **argv, char **env, char **commands)
 	{
 		free_list(head);
 		free(exec_command);
-		wait(NULL);	}
+		/*wait(NULL);*/
+		waitpid(mypid, &wstatus, 0);	}
+
+	return (WEXITSTATUS(wstatus));
 }

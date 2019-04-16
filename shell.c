@@ -11,11 +11,13 @@
 
 int main(int argc, char **argv, char **env)
 {
+	int last_status = 0;
+
 	signal(SIGINT, handle_sigint);
 	while (1)
 	{
 		if (argc > 0)
-			fun_getline(argv, env);
+			last_status = fun_getline(argv, env, &last_status);
 	}
 	return (0);
 }
