@@ -24,6 +24,8 @@ int fun_exec(char **argv, char **env, char **commands)
 		/*printf("NULL PATH");*/
 		free_list(head);
 		exit(EXIT_FAILURE);	}
+	if (_strncmp(commands[0], "env", 3) == 0)
+		print_env(env);
 	/*create child proccess */
 	new_id = fork();
 	if (new_id == 0)
@@ -31,9 +33,7 @@ int fun_exec(char **argv, char **env, char **commands)
 		mypid = getpid();
 		exec_command = command(commands, *store_paths);
 		/*execute process*/
-		if (_strncmp(commands[0], "env", 3) == 0)
-			print_env(env);
-		else if (stat(exec_command, &st) == 0)
+		if (stat(exec_command, &st) == 0)
 			execve(exec_command, commands, NULL);
 		else
 		{
