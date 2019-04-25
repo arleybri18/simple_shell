@@ -77,6 +77,8 @@ int semic(int semi, int *ls, char **cmds, char **argv, char **env, char **sec)
 				i++;
 				break;
 			}
+			if (cmds[i + 1] == NULL)
+				break;
 			b++;
 			i++;
 		}
@@ -84,10 +86,11 @@ int semic(int semi, int *ls, char **cmds, char **argv, char **env, char **sec)
 		if (cmds[i + 1] == NULL)
 			break;
 		i++;
-		while (b >= 0)
+		b = 0;
+		while (b < 5)
 		{
 			sec[b] = NULL;
-			b--;
+			b++;
 		}
 		count++;
 	}
