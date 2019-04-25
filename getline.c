@@ -1,30 +1,26 @@
 #include "holberton.h"
+int semic(int semi, int *ls, char **cmds, char **argv, char **env, char **);
 /**
  * fun_getline -  function that get the characters in the line
  *
  * @argv: arguments received on main
  * @env: variable enviroment of the main
- * @last_status: save de last status
+ * @ls: save de last status
  * Return: Nothing;
  */
 
-int fun_getline(char **argv, char **env, int *last_status)
+int fun_getline(char **argv, char **env, int *ls)
 {
-	int count = 1;
-	char *buffer = NULL;
+	int count = 1, semi = 0;
 	size_t bufsize = 0;
 	ssize_t characters = 0;
-	char delim[] = " \t\r\n";
-	char *string;
-	char *commands[50];
+	char delim[] = " \t\r\n", *string, *cmds[50], *buffer = NULL, *sec[5];
 
 	/*getline*/
 	characters = getline(&buffer, &bufsize, stdin);
 	if (characters == EOF || characters == -1)
-	{
 		exit(EXIT_SUCCESS);
-	}
-	if (buffer == NULL || commands == NULL)
+	if (buffer == NULL || cmds == NULL)
 	{
 		perror("Unable to allocate memory");
 		exit(EXIT_SUCCESS);
@@ -33,19 +29,67 @@ int fun_getline(char **argv, char **env, int *last_status)
 	{
 		/*saved commands typed*/
 		string = strtok(buffer, delim);
-		commands[0] = string;
+		cmds[0] = string;
 		while (string != NULL)
 		{
 			string = strtok(NULL, delim);
-			commands[count] = string;
+			cmds[count] = string;
+			if (cmds[count] && _strncmp(cmds[count], ";", 1) == 0)
+				semi++;
 			count++;
 		}
-		if (commands[0] != NULL)
+		if (cmds[0] != NULL)
 		{
-			if (_strncmp(commands[0], "exit", 4) == 0)
-				exit(*last_status);
+			if (_strncmp(cmds[0], "exit", 4) == 0)
+				exit(*ls);
 		}
-		*last_status = fun_exec(argv, env, commands);
+		if (semi > 0)
+			*ls = semic(semi, ls, cmds, argv, env, sec);
+		else
+			*ls = fun_exec(argv, env, cmds);
 	}
-	return (*last_status);
+	return (*ls);
+}
+/**
+ * semic - handle the commands separator ;
+ *
+ * @argv: arguments received on main
+ * @env: variable enviroment of the main
+ * @ls: save de last status
+ * @semi: number of semicolon in cmds
+ * @cmds: array with commands
+ * @sec: array to store commands without semicolon
+ * Return: Nothing;
+ */
+int semic(int semi, int *ls, char **cmds, char **argv, char **env, char **sec)
+{
+	int i = 0, b = 0, count = 0;
+
+	while (count < semi + 1)
+	{
+		b = 0;
+		while (cmds[i])
+		{
+			sec[b] = cmds[i];
+			if (cmds[i + 1] && _strncmp(cmds[i + 1], ";", 1) == 0)
+			{
+				sec[b + 1] = NULL;
+				i++;
+				break;
+			}
+			b++;
+			i++;
+		}
+		*ls = fun_exec(argv, env, sec);
+		if (cmds[i + 1] == NULL)
+			break;
+		i++;
+		while (b >= 0)
+		{
+			sec[b] = NULL;
+			b--;
+		}
+		count++;
+	}
+	return (*ls);
 }
